@@ -1,3 +1,29 @@
 php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"
 
 php artisan jwt:secret
+
+
+php artisan make:migration create_admins_table --create=admins
+
+
+php artisan migrate --path=/database/migrations/2022_10_25_135140_create_admins_table.php
+
+
+php artisan ide-helper:generate
+
+php artisan ide-helper:models
+
+
+
+php artisan cache:clear
+php artisan route:clear
+
+php artisan config:clear
+php artisan view:clear
+<?php
+Route::get('/clear-cache', function() {
+    Artisan::call('cache:clear');
+    return "Cache is cleared";
+});
+
+
